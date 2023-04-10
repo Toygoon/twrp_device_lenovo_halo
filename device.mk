@@ -6,6 +6,7 @@
 #
 
 LOCAL_PATH := device/lenovo/halo
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -18,14 +19,22 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
 
-PRODUCT_PACKAGES += \
-    bootctrl.taro
+# define hardware platform
+PRODUCT_PLATFORM := taro
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# fastbootd
+PRODUCT_PACKAGES += \
     bootctrl.taro \
-    libgptutils \
-    libz \
-    libcutils
+    fastbootd
+
+# PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#     bootctrl.taro \
+#     libgptutils \
+#     libz \
+#     libcutils
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
